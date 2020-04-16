@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isTextFieldShown = false;
   final noteTitleTextController = TextEditingController();
-  NotesList notesList = NotesList();
+  NotesList notesList = NotesList(); // создаём инстанс класса NotesList
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               height: 300,
-              child: notesList,
+              child: notesList, // юзаем созданный ранее инстанс
             ),
           ],
         ),
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           String titleText = noteTitleTextController.text;
           setState(() {
             if (titleText.length > 0) {
-              // notesList.createState().addNewNote(titleText);
+              notesList.addNewNote(titleText); // просто юзаем метод инстанса, как если бы напрямую обращались бы к его стейту
               noteTitleTextController.clear();
             }
             isTextFieldShown = !isTextFieldShown;

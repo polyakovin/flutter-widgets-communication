@@ -4,8 +4,12 @@ import 'package:uuid/uuid.dart';
 import '../models/note_model.dart';
 
 class NotesList extends StatefulWidget {
+  final NotesListState notesListState = NotesListState(); // создаём и запоминаем стейт виджета
+
+  void addNewNote(newNoteTitleText, {newNoteBodyText = 'empty'}) => notesListState.addNewNote(newNoteTitleText, newNoteBodyText: newNoteBodyText); // создаём копию (т.н. прокси) нужного метода из стейта
+
   @override
-  NotesListState createState() => NotesListState();
+  NotesListState createState() => notesListState; // назначаем нашему виджету созданный ранее стейт
 }
 
 class NotesListState extends State<NotesList> {
